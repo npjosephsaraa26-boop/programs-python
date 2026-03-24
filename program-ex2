@@ -1,0 +1,21 @@
+import pandas as pd
+
+data = {
+    'Name': ['Arun', 'Divya', None, 'Meena'],
+    'Age': [22, None, 23, 20],
+    'Salary': [25000, 30000, None, 26000]
+}
+
+df = pd.DataFrame(data)
+
+print("Original Data:")
+print(df)
+
+print("\nMissing Values Count:")
+print(df.isnull().sum())
+
+df['Age'].fillna(df['Age'].mean(), inplace=True)
+df['Salary'].fillna(0, inplace=True)
+df['Name'].fillna("Unknown", inplace=True)
+print("\nCleaned Data:")
+print(df)
